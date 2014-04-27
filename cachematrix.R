@@ -18,8 +18,10 @@
 makeCacheMatrix <- function(input = matrix()) {
   cache <- NULL                                  ## sets the cache with the inverse output matrix to NULL
   set <- function(y) {                           ## new function set: (not used in the second function cacheSolve)
-    output <<- y                                 ##    1. saves the new input matrix in a variable in another environment
-    cache <<- NULL                               ##    2. sets the cache with the inverse output matrix to NULL in another environment
+    output <<- y                                 ##    1. saves the new input matrix in a variable in another 
+                                                 ##       environment
+    cache <<- NULL                               ##    2. sets the cache with the inverse output matrix to NULL 
+                                                 ##       in another environment
   }
   get <- function() input                        ## new function, which gives back the value of the input matrix
   setinverse <- function(solve) cache <<- solve  ## new function, which calculates the inverse matrix and saves it
@@ -30,7 +32,8 @@ makeCacheMatrix <- function(input = matrix()) {
 }
 
 
-## "cacheSolve" uses the output list of the first function as input and returns a matrix which is the inverse of the input.
+## "cacheSolve" uses the output list of the first function as input and returns a matrix 
+## which is the inverse of the input.
 ## It checks wether the inverse of the matrix is already calculated. 
 ## If not, it computes the inverse matrix and gives it as output.
 ## If the inverse is already in the cache, this is given back as output.
@@ -39,9 +42,11 @@ cacheSolve <- function(inputlist, ...) {
   inverseofinput <- inputlist$getinverse()       ## assigns the cache to a variable, using the function getinverse
   if(!is.null(inverseofinput)) {                 ## tests if the inverse of the matrix is already in the cache
     message("getting cached data")                       
-    return(inverseofinput)                       ## if it is in the cache, the cache is returned as output and the function is quitted
+    return(inverseofinput)                       ## if it is in the cache, the cache is returned as output and 
+                                                 ## the function is quitted
   }
-  data <- inputlist$get()                        ## if there is nothing in the cache, the input matrix is saved in a variable
+  data <- inputlist$get()                        ## if there is nothing in the cache, the input matrix is saved 
+                                                 ## in a variable
   inverseofinput <- solve(data, ...)             ## and the inverse is calculated 
   inputlist$setinverse(inverseofinput)           ## saved in the cache  
   inverseofinput                                 ## and given as output
