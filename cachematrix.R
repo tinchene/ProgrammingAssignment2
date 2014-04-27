@@ -17,7 +17,7 @@
 
 makeCacheMatrix <- function(input = matrix()) {
   cache <- NULL                                  ## sets the cache with the inverse output matrix to NULL
-  set <- function(y) {                           ## new function set: (not used in the second function cacheSolve)
+  set <- function(y) {                           ## new function set:
     newinput <<- y                               ##    1. saves the new input matrix in a variable in another 
                                                  ##       environment
     cache <<- NULL                               ##    2. sets the cache with the inverse output matrix to NULL 
